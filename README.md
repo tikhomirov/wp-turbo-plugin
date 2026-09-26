@@ -1,45 +1,48 @@
-# WordPress Yandex Turbo Feed (`wp-turbo-plugin`)
+# WordPress Yandex Turbo Feed
 
-![WordPress Plugin](https://img.shields.io/badge/WordPress-5.0%2B-blue.svg)
-![PHP Support](https://img.shields.io/badge/PHP-7.4%20%7C%208.0%20%7C%208.1%20%7C%208.2%20%7C%208.3-777BB4.svg)
-![License](https://img.shields.io/badge/License-GPLv2-green.svg)
+[![WordPress Plugin](https://img.shields.io/badge/WordPress-5.0%2B-blue.svg)](https://wordpress.org/)
+[![PHP Support](https://img.shields.io/badge/PHP-7.4%20%7C%208.0%20%7C%208.1%20%7C%208.2%20%7C%208.3-777BB4.svg)](https://php.net/)
+[![License](https://img.shields.io/badge/License-GPLv3-green.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-Минималистичный и производительный плагин для генерации RSS/XML фида Яндекс.Турбо страниц для сайта на WordPress.
+Generates optimized Yandex Turbo RSS feeds for lightning-fast mobile reading in Yandex services.
 
----
+## Requirements
 
-## 🚀 Возможности
+| Component | Minimum | Tested |
+|-----------|---------|--------|
+| **WordPress** | 5.0 | 5.0 – 6.7 |
+| **PHP** | 7.4 | 7.4, 8.0, 8.1, 8.2, 8.3 |
 
-- ⚡ **Автоматическая генерация фида:** Доступ по специальному URL (по умолчанию `/feed/turbo/`).
-- ⚙️ **Настройки в админке:** Быстрая настройка заголовка, описания и параметров трансляции контента.
-- 🚀 **Легковесность:** Отсутствие лишней нагрузки на базу данных и кеширование заголовков.
+## Features
 
----
+- **Turbo Feed Generation:** Automated Yandex Turbo feed output at custom URLs.
 
-## 📥 Установка
+## Installation
 
-### Через Composer (рекомендуется)
+### Via Composer (VCS Repository)
+Add the repository to your `composer.json` and require the package:
+
 ```bash
 composer config repositories.tikhomirov-wp-turbo-plugin git https://github.com/tikhomirov/wp-turbo-plugin.git
 composer require tikhomirov/wp-turbo-plugin
 ```
 
-### Вручную
-1. Скачайте ZIP-архив репозитория.
-2. Распакуйте в директорию `/wp-content/plugins/wp-turbo-plugin/`.
-3. Активируйте плагин в админ-панели **Плагины → Установленные**.
+### Manual Installation
+1. Download the latest ZIP release.
+2. Upload the plugin folder to the `/wp-content/plugins/` directory.
+3. Activate the plugin through the 'Plugins' menu in WordPress.
 
 ---
 
-## 💻 Использование
+## Русский
 
-1. Перейдите в **Настройки → Яндекс.Турбо**.
-2. Укажите параметры фида и нажмите **Сохранить**.
-3. Укажите полученную ссылку фида в Вебмастере Яндекса.
+Генерирует оптимизированный RSS/XML фид Яндекс.Турбо для сверхбыстрой загрузки мобильных версий страниц.
 
----
+### Совместимость
+- **WordPress:** от 5.0 и выше
+- **PHP:** от 7.4 до 8.3
 
-## 🛠️ Требования
+### Возможности
+- Генерация фида Яндекс.Турбо для мобильных устройств.
 
-- **WordPress:** 5.0 или выше
-- **PHP:** 7.4, 8.0, 8.1, 8.2, 8.3
+**Установка:** подключите через Composer (VCS) или скачайте архив и активируйте в панели управления WordPress.

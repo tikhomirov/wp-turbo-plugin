@@ -20,6 +20,7 @@
 
 ### Через Composer (рекомендуется)
 ```bash
+composer config repositories.tikhomirov-wp-turbo-plugin git https://github.com/tikhomirov/wp-turbo-plugin.git
 composer require tikhomirov/wp-turbo-plugin
 ```
 

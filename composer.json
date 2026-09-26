@@ -1,15 +1,16 @@
 {
-  "name": "rwsite/wp-turbo-plugin",
-  "description": "Simple Yandex turbo feed. WordPress plugin.",
-  "minimum-stability": "stable",
-  "license": "proprietary",
+  "name": "tikhomirov/wp-turbo-plugin",
+  "description": "Минималистичный и производительный плагин для генерации RSS/XML фида Яндекс.Турбо страниц для сайта на WordPress.",
   "type": "wordpress-plugin",
+  "license": "GPL-3.0-or-later",
   "authors": [
     {
       "name": "Aleksei Tikhomirov",
-      "email": "alex@rwsite.ru"
+      "email": "alex@rwsite.ru",
+      "homepage": "https://rwsite.ru"
     }
   ],
   "require": {
+    "php": ">=7.4"
   }
 }

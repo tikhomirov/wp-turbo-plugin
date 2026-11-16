@@ -9,7 +9,7 @@ global $post;
 /** @var WP_Post[] $posts */
 $posts = get_posts([
     'numberposts'    => -1,
-    'posts_per_page' => get_option('turbo_options',['per_page' => '500'])['per_page'],
+    'posts_per_page' => get_option('turbo_options', ['per_page' => '500'])['per_page'],
     'paged'          => get_query_var('page'),
 ]);
 
@@ -23,46 +23,48 @@ echo '<?xml version="1.0" encoding="' . get_option('blog_charset') . '"?' . '>';
         version="2.0"
 >
     <channel>
-        <title><?php bloginfo( 'name' ); ?></title>
-        <link><?php bloginfo( 'url' ); ?></link>
-        <description><?php bloginfo( 'description' ); ?></description>
-        <language><?php bloginfo( 'language' ); ?></language>
+        <title><?php bloginfo('name'); ?></title>
+        <link><?php bloginfo('url'); ?></link>
+        <description><?php bloginfo('description'); ?></description>
+        <language><?php bloginfo('language'); ?></language>
         
         <yandex:related type="infinity">
             <?php query_posts('orderby=rand&showposts=5');
-                if (have_posts()) : while (have_posts()) : the_post();
-                ?>
+if (have_posts()) {
+    while (have_posts()) {
+        the_post();
+        ?>
                 <link url="<?php the_permalink(); ?>"><?php the_title(); ?></link>
-                <?php endwhile;
-            endif; ?>
+                <?php }
+    } ?>
         </yandex:related>
         
         <?php
         $options = get_option('turbo_options');
-        echo (isset($options['turbo_metrika_code'])) ? '<turbo:analytics type="Yandex" id="' . $options['turbo_metrika_code'] . '"></turbo:analytics>' : '';
-        echo (isset($options['turbo_google_code'])) ? '<turbo:analytics type="Google" id="' . $options['turbo_google_code'] . '"></turbo:analytics>' : '';
-        echo (isset($options['turbo_mailru_code'])) ? '<turbo:analytics type="MailRu" id="' . $options['turbo_mailru_code'] . '"></turbo:analytics>' : '';
-        echo (isset($options['turbo_rambler_code'])) ? '<turbo:analytics type="Rambler" id="' . $options['turbo_rambler_code'] . '"></turbo:analytics>' : '';//*/
-        
-        $rlinks = $options['turbo_related_html'] ?? '';
-        $tmp = $post;
+echo (isset($options['turbo_metrika_code'])) ? '<turbo:analytics type="Yandex" id="' . $options['turbo_metrika_code'] . '"></turbo:analytics>' : '';
+echo (isset($options['turbo_google_code'])) ? '<turbo:analytics type="Google" id="' . $options['turbo_google_code'] . '"></turbo:analytics>' : '';
+echo (isset($options['turbo_mailru_code'])) ? '<turbo:analytics type="MailRu" id="' . $options['turbo_mailru_code'] . '"></turbo:analytics>' : '';
+echo (isset($options['turbo_rambler_code'])) ? '<turbo:analytics type="Rambler" id="' . $options['turbo_rambler_code'] . '"></turbo:analytics>' : ''; // */
 
-        foreach ($posts as $_post):
-            setup_postdata($_post);
-            the_post();
-            ?>
+$rlinks = $options['turbo_related_html'] ?? '';
+$tmp = $post;
+
+foreach ($posts as $_post) {
+    setup_postdata($_post);
+    the_post();
+    ?>
             <item turbo="true">
                 <title><?php echo sanitize_text_field(get_the_title()); ?></title>
                 <link><?php echo get_permalink() ?></link>
                 <author><?php the_author_meta('display_name', $post->post_author); ?></author>
                 <category><?php the_category(', ', 'single', $post->ID); ?></category>
-                <pubDate><?php echo get_feed_build_date( 'D, d M Y H:i:s +0000' ); ?></pubDate>
+                <pubDate><?php echo get_feed_build_date('D, d M Y H:i:s +0000'); ?></pubDate>
                 <turbo:content><![CDATA[<?php the_content(); ?>]]></turbo:content>
-                <?php echo !empty($rlinks) ? '<yandex:related>' . $rlinks . '</yandex:related>' : ''; ?>
+                <?php echo ! empty($rlinks) ? '<yandex:related>' . $rlinks . '</yandex:related>' : ''; ?>
             </item>
         <?php
-        endforeach;
-        wp_reset_query();
-        ?>
+}
+wp_reset_query();
+?>
     </channel>
 </rss>
